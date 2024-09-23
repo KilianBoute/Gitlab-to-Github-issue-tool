@@ -113,8 +113,8 @@ def make_github_request_with_retry(method, url, data=None):
             response = requests.request(method, url, headers=github_headers, json=data)
             
             if response.status_code == 403:
-                print(f"Rate limit or access issue detected (403). Retrying in 1 minute...")
-                time.sleep(60)
+                print(f"Rate limit or access issue detected (403). Retrying in 5 minutes...")
+                time.sleep(300)
                 continue  # Retry after 1 minute
             elif response.status_code in [500, 502, 503, 504]:
                 print(f"GitHub server error ({response.status_code}). Retrying in 5 seconds...")
